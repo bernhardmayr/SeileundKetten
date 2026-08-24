@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description: "Sicher auswählen. Verlässlich geliefert.",
     type: "website",
     locale: "de_DE",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Seile & Ketten – Sicher auswählen. Verlässlich geliefert." }],
+    images: [{ url: "/og.svg", width: 1200, height: 630, alt: "Seile & Ketten – Sicher auswählen. Verlässlich geliefert." }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Seile & Ketten",
     description: "Sicher auswählen. Verlässlich geliefert.",
-    images: ["/og.png"],
+    images: ["/og.svg"],
   },
   icons: {
     icon: "/favicon.svg",
