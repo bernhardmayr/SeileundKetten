@@ -20,7 +20,7 @@ function BrandMark() {
 
 function ProductSymbol({ accent }: { accent: Product["accent"] }) {
   return (
-    <img className={`product-photo product-photo--${accent}`} src="/product-world.webp" alt="" />
+    <img className={`product-photo product-photo--${accent}`} src="/product-world.svg" alt="" />
   );
 }
 
@@ -148,7 +148,7 @@ export default function ShopApp() {
       <main id="main-content">
         <section className="hero" id="top">
           <div className="hero__visual" aria-hidden="true">
-            <img src="/product-world.webp" alt="" />
+            <img src="/product-world.svg" alt="" />
           </div>
           <div className="hero__shade" />
           <div className="wrap hero__content">
