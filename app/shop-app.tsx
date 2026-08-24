@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { euro, products, type Product, type UspKey, uspFeatures } from "./data";
 
 type CartLine = { product: Product; quantity: number };
@@ -66,6 +66,25 @@ export default function ShopApp() {
   const [compare, setCompare] = useState<string[]>([]);
   const [toast, setToast] = useState<string | null>(null);
   const [showAllProducts, setShowAllProducts] = useState(false);
+  const searchRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const sharedSearch = params.get("q");
+    const sharedCategory = params.get("kategorie");
+    if (sharedSearch) setSearch(sharedSearch);
+    if (sharedCategory && categories.includes(sharedCategory as (typeof categories)[number])) {
+      setCategory(sharedCategory as (typeof categories)[number]);
+    }
+    const focusSearch = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        searchRef.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", focusSearch);
+    return () => window.removeEventListener("keydown", focusSearch);
+  }, []);
 
   const filteredProducts = useMemo(() => {
     const term = search.trim().toLowerCase();
@@ -124,7 +143,7 @@ export default function ShopApp() {
           </a>
           <label className="site-search">
             <span className="sr-only">Produkte durchsuchen</span>
-            <input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Artikel, Norm oder Fremdnummer suchen …" />
+            <input ref={searchRef} value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Artikel, Norm oder Fremdnummer suchen …" />
             <kbd>⌘ K</kbd>
           </label>
           <div className="header-actions">
