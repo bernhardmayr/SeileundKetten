@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const githubPagesUrl = "https://bernhardmayr.github.io/SeileundKetten";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://seile-und-ketten.example"),
+  metadataBase: new URL(`${githubPagesUrl}/`),
   title: "Seile & Ketten – Hebetechnik, die passt",
   description:
     "Seile, Ketten und Hebetechnik sicher auswählen, transparent kalkulieren und verlässlich liefern lassen.",
@@ -11,17 +14,17 @@ export const metadata: Metadata = {
     description: "Sicher auswählen. Verlässlich geliefert.",
     type: "website",
     locale: "de_DE",
-    images: [{ url: "/og.svg", width: 1200, height: 630, alt: "Seile & Ketten – Sicher auswählen. Verlässlich geliefert." }],
+    images: [{ url: `${githubPagesUrl}/og.svg`, width: 1200, height: 630, alt: "Seile & Ketten – Sicher auswählen. Verlässlich geliefert." }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Seile & Ketten",
     description: "Sicher auswählen. Verlässlich geliefert.",
-    images: ["/og.svg"],
+    images: [`${githubPagesUrl}/og.svg`],
   },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: `${publicBasePath}/favicon.svg`,
+    shortcut: `${publicBasePath}/favicon.svg`,
   },
 };
 
