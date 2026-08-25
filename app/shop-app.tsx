@@ -6,7 +6,9 @@ import { euro, products, type Product, type UspKey, uspFeatures } from "./data";
 type CartLine = { product: Product; quantity: number };
 type Overlay = "wizard" | "product" | "cart" | UspKey | null;
 
-const categories = ["Alle", "Ketten", "Seile", "Hebebänder", "Zubehör"] as const;\nconst publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";\nconst publicAsset = (path: string) => `\${publicBasePath}\${path}`;
+const categories = ["Alle", "Ketten", "Seile", "Hebebänder", "Zubehör"] as const;
+const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const publicAsset = (path: string) => `${publicBasePath}${path}`;
 
 function BrandMark() {
   return (
